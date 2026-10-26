@@ -41,6 +41,7 @@
 | تحليل أصحاب المصلحة (Stakeholder Analysis) | [Stakeholder-Analysis.md](Stakeholder-Analysis.md) |
 | المتطلبات الوظيفية (Functional Requirements) | [Functional-Requirements.md](Functional-Requirements.md) |
 | المتطلبات غير الوظيفية (Non-Functional Requirements) | [Non-Functional-Requirements.md](Non-Functional-Requirements.md) |
+
 توفر المستندات المرجعية تفاصيل المتطلبات والمعلومات الداعمة للمشروع، دون الحاجة إلى تكرارها داخل هذه الوثيقة.
 
 ## 2. الوصف العام للنظام (Overall System Description)
