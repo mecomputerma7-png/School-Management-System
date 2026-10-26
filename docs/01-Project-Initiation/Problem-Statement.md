@@ -28,15 +28,15 @@ This approach requires additional administrative effort, complicates information
 
 The major problems affecting school operations include:
 
-| ID | Problem | Impact |
+| ID  | Problem | Impact |
 |---|---|---|
-| P-01 | Manual student record management | Time-consuming registration, updates, and information retrieval. |
-| P-02 | Fragmented institutional data | Duplicate records, inconsistent information, and limited data integration. |
-| P-03 | Manual grade processing | Increased risk of calculation errors and delayed academic results. |
-| P-04 | Inefficient fee management | Difficulties tracking payments, outstanding balances, and financial records. |
-| P-05 | Limited access control | Increased risk of unauthorized access to sensitive information. |
-| P-06 | Manual report preparation | Delayed reporting and additional administrative workload. |
-| P-07 | Uncoordinated class and teacher information | Difficulties maintaining accurate class assignments and related records. |
+| P-01  | Manual student record management | Time-consuming registration, updates, and information retrieval. |
+| P-02  | Fragmented institutional data | Duplicate records, inconsistent information, and limited data integration. |
+| P-03  | Manual grade processing | Increased risk of calculation errors and delayed academic results. |
+| P-04  | Inefficient fee management | Difficulties tracking payments, outstanding balances, and financial records. |
+| P-05  | Limited access control | Increased risk of unauthorized access to sensitive information. |
+| P-06  | Manual report preparation | Delayed reporting and additional administrative workload. |
+| P-07  | Uncoordinated class and teacher information | Difficulties maintaining accurate class assignments and related records. |
 
 ## 4. Root Causes
 
