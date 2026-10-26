@@ -35,12 +35,12 @@ Attendance tracking, timetable management, payroll, library management, transpor
 
 | Document | Reference |
 |---|---|
-| Project Proposal | `../01-Project-Initiation/Project-Proposal.md` |
-| Problem Statement | `../01-Project-Initiation/Problem-Statement.md` |
-| Feasibility Study | `../01-Project-Initiation/Feasibility-Study.md` |
-| Stakeholder Analysis | `Stakeholder-Analysis.md` |
-| Functional Requirements | `Functional-Requirements.md` |
-| Non-Functional Requirements | `Non-Functional-Requirements.md` |
+| مقترح المشروع (Project Proposal) | [Project-Proposal.md](../01-Project-Initiation/Project-Proposal.md) |
+| بيان المشكلة (Problem Statement) | [Problem-Statement.md](../01-Project-Initiation/Problem-Statement.md) |
+| دراسة الجدوى (Feasibility Study) | [Feasibility-Study.md](../01-Project-Initiation/Feasibility-Study.md) |
+| تحليل أصحاب المصلحة (Stakeholder Analysis) | [Stakeholder-Analysis.md](Stakeholder-Analysis.md) |
+| المتطلبات الوظيفية (Functional Requirements) | [Functional-Requirements.md](Functional-Requirements.md) |
+| المتطلبات غير الوظيفية (Non-Functional Requirements) | [Non-Functional-Requirements.md](Non-Functional-Requirements.md) |
 
 The referenced documents provide detailed requirements and supporting project information without duplication in this specification.
 
