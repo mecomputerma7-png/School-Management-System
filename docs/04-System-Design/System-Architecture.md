@@ -140,7 +140,7 @@ Its responsibilities include:
 - Calculating academic results and financial balances.
 - Coordinating transactions across related records.
 
-Business rules are defined in `../03-System-Analysis/Business-Rules.md`.
+Business rules are defined in [Business Rules](../03-System-Analysis/Business-Rules.md).
 
 ### 5.3 Data Access Layer
 
