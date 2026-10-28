@@ -349,13 +349,13 @@ The proposed architecture is subject to the following constraints:
 
 | Document | Relationship |
 |---|---|
-| `../02-Requirements-Analysis/SRS.md` | Defines the overall system requirements and boundaries. |
-| `../02-Requirements-Analysis/Functional-Requirements.md` | Defines required application capabilities. |
-| `../02-Requirements-Analysis/Non-Functional-Requirements.md` | Defines quality, security, and operational requirements. |
-| `../03-System-Analysis/Business-Rules.md` | Defines institutional rules enforced by the application. |
-| `../03-System-Analysis/Process-Analysis.md` | Defines operational processes and information dependencies. |
-| `Database-Design.md` | Will define the database schema and relationships. |
-| `Interface-Design.md` | Will define desktop screens and user interactions. |
+| [SRS](../02-Requirements-Analysis/SRS.md) | Defines the overall system requirements and boundaries. |
+| [Functional Requirements](../02-Requirements-Analysis/Functional-Requirements.md) | Defines required application capabilities. |
+| [Non-Functional Requirements](../02-Requirements-Analysis/Non-Functional-Requirements.md) | Defines quality, security, and operational requirements. |
+| [Business Rules](../03-System-Analysis/Business-Rules.md) | Defines institutional rules enforced by the application. |
+| [Process Analysis](../03-System-Analysis/Process-Analysis.md) | Defines operational processes and information dependencies. |
+| [Database Design](Database-Design.md) | Defines the database schema and relationships. |
+| [Interface Design](Interface-Design.md) | Defines desktop screens and user interactions. |
 
 ## 15. Conclusion
 
