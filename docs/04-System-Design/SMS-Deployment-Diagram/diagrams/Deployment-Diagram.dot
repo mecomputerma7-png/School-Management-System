@@ -1,0 +1,19 @@
+digraph Deployment {
+ graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.5", ranksep="0.7", fontname="Arial", label="SMS — UML Deployment Diagram (Proposed LAN Deployment)", labelloc=t, fontsize=20, fontcolor="#16324f", compound=true];
+ node [fontname="Arial", shape=box, style="rounded,filled", color="#56718a", fillcolor="#f0f6fc", fontcolor="#14283d", margin="0.18,0.13"];
+ edge [fontname="Arial", color="#44657f", fontcolor="#27445c", arrowsize=0.75];
+ subgraph cluster_clients {label="School LAN — Desktop Client Devices (1..N)"; style="rounded,filled"; color="#b7d1e5"; fillcolor="#f6faff";
+ principal [label="<<device>> Principal Workstation\n<<executionEnvironment>> Desktop OS\n<<artifact>> SMS Desktop Client\nPresentation + Business Logic + Data Access"];
+ admin [label="<<device>> Administration Workstation\n<<executionEnvironment>> Desktop OS\n<<artifact>> SMS Desktop Client\nPresentation + Business Logic + Data Access"];
+ teacher [label="<<device>> Teacher Workstation\n<<executionEnvironment>> Desktop OS\n<<artifact>> SMS Desktop Client\nPresentation + Business Logic + Data Access"];
+ accountant [label="<<device>> Accountant Workstation\n<<executionEnvironment>> Desktop OS\n<<artifact>> SMS Desktop Client\nPresentation + Business Logic + Data Access"];
+ sysadmin [label="<<device>> System Administrator Workstation\n<<executionEnvironment>> Desktop OS\n<<artifact>> SMS Desktop Client\nPresentation + Business Logic + Data Access"];
+ }
+ network [shape=ellipse, label="<<communicationPath>>\nSchool LAN / TCP-IP\nAuthenticated, encrypted DB connections", fillcolor="#dff2eb", color="#4b9c85"];
+ subgraph cluster_server {label="Central School Server (1)"; style="rounded,filled"; color="#b7d1e5"; fillcolor="#f6faff";
+ db [label="<<device>> Database Server\n<<executionEnvironment>> Server OS (TBD)\n<<executionEnvironment>> Relational DBMS (TBD)\n<<artifact>> SMS Database\nStudents | Academic | Grades | Fees | RBAC | Audit", fillcolor="#e3f0fd"];
+ }
+ backup [label="<<device>> Protected Backup Storage (Proposed)\nEncrypted backups + tested restoration\nAccess restricted to authorized administrators", fillcolor="#fff4df", color="#b28b49"];
+ principal -> network [dir=none]; admin -> network [dir=none]; teacher -> network [dir=none]; accountant -> network [dir=none]; sysadmin -> network [dir=none]; network -> db [label="DB protocol / TLS (where supported)", dir=none]; db -> backup [label="scheduled backup (controlled)", style=dashed];
+ {rank=same;principal;admin;teacher;accountant;sysadmin}
+}
