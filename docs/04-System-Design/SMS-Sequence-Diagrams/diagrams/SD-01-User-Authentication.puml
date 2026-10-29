@@ -1,0 +1,39 @@
+@startuml SD-01 User Authentication
+!theme plain
+title SD-01 — User Authentication (UC-01)
+actor "School User" as User
+boundary "LoginView\n(Desktop UI)" as UI
+control "AuthenticationService\n(Business Logic)" as Auth
+entity "UserRepository\n(Data Access)" as Repo
+database "Central Database" as DB
+
+User -> UI : Enter username and password
+User -> UI : Click Login
+UI -> UI : Validate required fields
+alt Missing required fields
+  UI --> User : Display validation message
+else Input complete
+  UI -> Auth : authenticate(username, password)
+  Auth -> Repo : findByUsername(username)
+  Repo -> DB : Query account and password hash
+  DB --> Repo : Account record or not found
+  Repo --> Auth : Account record or not found
+  alt Account not found / disabled / invalid password
+    Auth --> UI : AuthenticationFailed
+    UI --> User : Show generic login error
+  else Credentials valid and account active
+    Auth -> Repo : loadRolesAndPermissions(userId)
+    Repo -> DB : Query active roles and permissions
+    DB --> Repo : Authorized roles and permissions
+    Repo --> Auth : Authorized roles and permissions
+    Auth -> Auth : Establish application session
+    Auth --> UI : Authenticated session context
+    UI --> User : Open authorized dashboard
+  end
+end
+note over Auth,DB
+Password verification occurs in the business logic.
+Only password hashes are stored; never return them to the UI.
+Authentication failures must not disclose account existence.
+end note
+@enduml
