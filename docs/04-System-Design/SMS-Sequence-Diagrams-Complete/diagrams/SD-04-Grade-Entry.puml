@@ -1,0 +1,23 @@
+@startuml
+title SD-04 - Grade Entry
+autonumber
+skinparam sequenceMessageAlign center
+participant "Teacher" as P0
+participant "Grade Entry UI" as P1
+participant "Grade Service" as P2
+participant "Grade Repository" as P3
+participant "Database" as P4
+P0 -> P1 : Select section, term, component; enter scores
+P1 -> P2 : saveGrades(batch)
+P2 -> P2 : Authorize teaching assignment
+P2 -> P3 : loadContextAndStudents()
+P3 -> P4 : Read section, term, assignments, finalization
+P4 -> P3 : Academic context
+P2 -> P2 : Validate section history, score bounds, not finalized
+P2 -> P3 : beginTransaction(); upsertGrades()
+P3 -> P4 : INSERT/UPDATE grades; COMMIT
+P4 -> P3 : Saved / rollback
+P3 -> P2 : Result
+note over P1: alt: success or rejected
+P1 -> P0 : Show saved scores / errors
+@enduml

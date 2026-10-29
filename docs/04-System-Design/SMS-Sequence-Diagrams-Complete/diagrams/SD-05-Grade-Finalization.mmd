@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-05 - Grade Finalization
+    participant P0 as Authorized Staff
+    participant P1 as Finalization UI
+    participant P2 as Grade Service
+    participant P3 as Grade Repository
+    participant P4 as Database
+    P0->>P1: Request finalization for section subject + term
+    P1->>P2: finalizeGrades(context)
+    P2->>P2: Check permission + term-year match
+    P2->>P3: beginTransaction(), lock context
+    P3->>P4: Read grades + components + status
+    P4->>P3: Snapshot / missing scores
+    P2->>P2: Validate completeness and configured weights
+    P2->>P3: createFinalization()
+    P3->>P4: INSERT finalization, COMMIT
+    P4->>P3: Success / rollback
+    P3->>P2: Finalization result
+    Note over P2: alt: finalized or rejected
+    P1->>P0: Display locked status / errors

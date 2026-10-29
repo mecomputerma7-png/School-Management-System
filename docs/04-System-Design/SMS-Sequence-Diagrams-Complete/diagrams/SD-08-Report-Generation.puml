@@ -1,0 +1,20 @@
+@startuml
+title SD-08 - Report Generation
+autonumber
+skinparam sequenceMessageAlign center
+participant "Authorized User" as P0
+participant "Reports UI" as P1
+participant "Report Service" as P2
+participant "Report Repository" as P3
+participant "Database" as P4
+P0 -> P1 : Select report + filters
+P1 -> P2 : generateReport(type,filters)
+P2 -> P2 : Authorize report type and row scope
+P2 -> P3 : queryAuthorizedData(filters)
+P3 -> P4 : SELECT filtered permitted records
+P4 -> P3 : Result set
+P3 -> P2 : Authorized data
+P2 -> P2 : Format report; enforce field restrictions
+P2 -> P1 : Report preview / empty result
+P1 -> P0 : Preview or print/export if permitted
+@enduml

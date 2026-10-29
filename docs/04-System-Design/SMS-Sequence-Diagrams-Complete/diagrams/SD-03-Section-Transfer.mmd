@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-03 - Section Transfer
+    participant P0 as Admin Staff
+    participant P1 as Section UI
+    participant P2 as Enrollment Service
+    participant P3 as Assignment Repository
+    participant P4 as Database
+    P0->>P1: Select enrollment + target section + date
+    P1->>P2: transferSection(request)
+    P2->>P2: Authorize + validate academic year
+    P2->>P3: beginTransaction + lock enrollment
+    P3->>P4: SELECT FOR UPDATE active assignment
+    P4->>P3: Current assignment
+    P2->>P2: Check date, overlap and section eligibility
+    P2->>P3: closeCurrentAndCreateNew()
+    P3->>P4: UPDATE effectiveTo, INSERT assignment
+    P4->>P3: Commit / rollback
+    P3->>P2: Transfer result
+    Note over P2: alt: success or conflict
+    P1->>P0: Show history / error

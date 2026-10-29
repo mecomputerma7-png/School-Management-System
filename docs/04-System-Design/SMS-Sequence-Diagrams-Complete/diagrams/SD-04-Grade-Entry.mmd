@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-04 - Grade Entry
+    participant P0 as Teacher
+    participant P1 as Grade Entry UI
+    participant P2 as Grade Service
+    participant P3 as Grade Repository
+    participant P4 as Database
+    P0->>P1: Select section, term, component, enter scores
+    P1->>P2: saveGrades(batch)
+    P2->>P2: Authorize teaching assignment
+    P2->>P3: loadContextAndStudents()
+    P3->>P4: Read section, term, assignments, finalization
+    P4->>P3: Academic context
+    P2->>P2: Validate section history, score bounds, not finalized
+    P2->>P3: beginTransaction(), upsertGrades()
+    P3->>P4: INSERT/UPDATE grades, COMMIT
+    P4->>P3: Saved / rollback
+    P3->>P2: Result
+    Note over P2: alt: success or rejected
+    P1->>P0: Show saved scores / errors

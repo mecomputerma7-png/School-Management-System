@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-07 - Financial Correction
+    participant P0 as Accountant
+    participant P1 as Correction UI
+    participant P2 as Finance Service
+    participant P3 as Finance Repository
+    participant P4 as Database
+    P0->>P1: Request correction with reason
+    P1->>P2: proposeCorrection(request)
+    P2->>P2: Verify authority and approval policy
+    P2->>P3: loadOriginalAndAllocationState()
+    P3->>P4: Read original transaction + allocations
+    P4->>P3: Original state
+    P2->>P2: Validate reversal impact and balances
+    P2->>P3: beginTransaction(), recordAdjustment()
+    P3->>P4: Append correction + effective allocation changes
+    P4->>P3: Commit / rollback
+    P3->>P2: Correction reference
+    Note over P2: alt: accepted or rejected
+    P1->>P0: Display correction history
