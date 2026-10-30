@@ -1,0 +1,36 @@
+digraph Activity {
+graph [rankdir=TB, bgcolor="white", pad="0.4", nodesep="0.4", ranksep="0.55", label="Student Registration (UC-02)", labelloc=t, fontsize=22, fontname="DejaVu Sans", fontcolor="#14345B"];
+node [shape=box, style="rounded,filled", fillcolor="#E9F2FD", color="#3574B5", penwidth=1.4, fontname="DejaVu Sans", fontsize=11, margin="0.18,0.12"];
+edge [fontname="DejaVu Sans", fontsize=10, color="#47647E", arrowsize=0.75];
+start [label="Start", shape=ellipse, fillcolor="#163A64", color="#163A64", fontcolor="#FFFFFF"];
+login [label="Administrative staff opens registration form", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+auth [label="Authorized to register students?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+deny [label="Show access denied", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+input [label="Enter student information", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+valid [label="Required fields and formats valid?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+fix [label="Display validation errors", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+duplicate [label="Student identifier already exists?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+dupmsg [label="Show duplicate warning", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+save [label="Begin transaction; insert Student record", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+db [label="Database operation succeeds?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+rollback [label="Rollback; show error", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+commit [label="Commit; show student record", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+end [label="End", shape=ellipse, fillcolor="#163A64", color="#163A64", fontcolor="#FFFFFF"];
+start -> login [label=""];
+login -> auth [label=""];
+auth -> deny [label="No"];
+deny -> end [label=""];
+auth -> input [label="Yes"];
+input -> valid [label=""];
+valid -> fix [label="No"];
+fix -> input [label="Correct"];
+valid -> duplicate [label="Yes"];
+duplicate -> dupmsg [label="Yes"];
+dupmsg -> input [label="Correct"];
+duplicate -> save [label="No"];
+save -> db [label=""];
+db -> rollback [label="No"];
+rollback -> end [label=""];
+db -> commit [label="Yes"];
+commit -> end [label=""];
+}

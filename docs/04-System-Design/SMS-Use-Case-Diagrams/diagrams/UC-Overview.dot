@@ -1,0 +1,58 @@
+digraph SMS {
+	bgcolor=white fontcolor="#183153" fontname="DejaVu Sans" fontsize=20 label="SCHOOL MANAGEMENT SYSTEM — USE CASE DIAGRAM" labelloc=t nodesep=0.35 pad=0.35 rankdir=LR ranksep=1.0
+	Principal [label="School Principal" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Admin [label="System Administrator" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Staff [label="Administrative Staff" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Teacher [label=Teacher color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Accountant [label=Accountant color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	subgraph cluster_sms {
+		bgcolor="#F9FBFE" color="#7B91AD" fontname="DejaVu Sans" fontsize=14 label="SMS Desktop Application" style=rounded
+		"UC-01" [label="UC-01
+Authenticate User" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-02" [label="UC-02
+Register Student" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-03" [label="UC-03
+Update Student Information" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-04" [label="UC-04
+Register Teacher" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-05" [label="UC-05
+Assign Teacher" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-06" [label="UC-06
+Manage Class Sections" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-07" [label="UC-07
+Record Student Grades" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-08" [label="UC-08
+Finalize Grades" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-09" [label="UC-09
+Configure Tuition Fees" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-10" [label="UC-10
+Record Student Payment" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-11" [label="UC-11
+Correct Payment Transaction" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-12" [label="UC-12
+Manage User Accounts" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-13" [label="UC-13
+Generate Reports" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+	}
+	Principal -> "UC-01" [arrowhead=none color="#657C95"]
+	Admin -> "UC-01" [arrowhead=none color="#657C95"]
+	Staff -> "UC-01" [arrowhead=none color="#657C95"]
+	Teacher -> "UC-01" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-01" [arrowhead=none color="#657C95"]
+	Staff -> "UC-02" [arrowhead=none color="#657C95"]
+	Staff -> "UC-03" [arrowhead=none color="#657C95"]
+	Staff -> "UC-04" [arrowhead=none color="#657C95"]
+	Staff -> "UC-05" [arrowhead=none color="#657C95"]
+	Staff -> "UC-06" [arrowhead=none color="#657C95"]
+	Teacher -> "UC-07" [arrowhead=none color="#657C95"]
+	Staff -> "UC-08" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-09" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-10" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-11" [arrowhead=none color="#657C95"]
+	Admin -> "UC-12" [arrowhead=none color="#657C95"]
+	Principal -> "UC-13" [arrowhead=none color="#657C95"]
+	Admin -> "UC-13" [arrowhead=none color="#657C95"]
+	Staff -> "UC-13" [arrowhead=none color="#657C95"]
+	Teacher -> "UC-13" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-13" [arrowhead=none color="#657C95"]
+}

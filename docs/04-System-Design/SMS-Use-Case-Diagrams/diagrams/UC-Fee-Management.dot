@@ -1,0 +1,16 @@
+digraph SMS {
+	bgcolor=white fontcolor="#183153" fontname="DejaVu Sans" fontsize=20 label="SCHOOL MANAGEMENT SYSTEM — USE CASE DIAGRAM" labelloc=t nodesep=0.35 pad=0.35 rankdir=LR ranksep=1.0
+	Accountant [label=Accountant color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	subgraph cluster_sms {
+		bgcolor="#F9FBFE" color="#7B91AD" fontname="DejaVu Sans" fontsize=14 label="SMS Desktop Application" style=rounded
+		"UC-09" [label="UC-09
+Configure Tuition Fees" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-10" [label="UC-10
+Record Student Payment" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+		"UC-11" [label="UC-11
+Correct Payment Transaction" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+	}
+	Accountant -> "UC-09" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-10" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-11" [arrowhead=none color="#657C95"]
+}

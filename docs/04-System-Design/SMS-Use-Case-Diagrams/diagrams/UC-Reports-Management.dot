@@ -1,0 +1,18 @@
+digraph SMS {
+	bgcolor=white fontcolor="#183153" fontname="DejaVu Sans" fontsize=20 label="SCHOOL MANAGEMENT SYSTEM — USE CASE DIAGRAM" labelloc=t nodesep=0.35 pad=0.35 rankdir=LR ranksep=1.0
+	Principal [label="School Principal" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Admin [label="System Administrator" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Staff [label="Administrative Staff" color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Teacher [label=Teacher color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	Accountant [label=Accountant color="#4077AC" fillcolor="#EAF3FF" fontname="DejaVu Sans" fontsize=11 shape=box style="rounded,filled"]
+	subgraph cluster_sms {
+		bgcolor="#F9FBFE" color="#7B91AD" fontname="DejaVu Sans" fontsize=14 label="SMS Desktop Application" style=rounded
+		"UC-13" [label="UC-13
+Generate Reports" color="#376A9B" fillcolor="#FFFFFF" fontname="DejaVu Sans" fontsize=10 shape=ellipse style=filled]
+	}
+	Principal -> "UC-13" [arrowhead=none color="#657C95"]
+	Admin -> "UC-13" [arrowhead=none color="#657C95"]
+	Staff -> "UC-13" [arrowhead=none color="#657C95"]
+	Teacher -> "UC-13" [arrowhead=none color="#657C95"]
+	Accountant -> "UC-13" [arrowhead=none color="#657C95"]
+}
