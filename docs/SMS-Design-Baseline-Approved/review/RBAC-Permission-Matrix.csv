@@ -1,0 +1,22 @@
+﻿Permission,Action,Principal,System Administrator,Administrative Staff,Teacher,Accountant
+STUDENT_READ,Student profile read,Y,Y,Y,Assigned,Fees only
+STUDENT_WRITE,Register/edit students,N,Y,Y,N,N
+ENROLLMENT_TRANSFER,Enroll/transfer section,N,Y,Y,N,N
+TEACHER_READ,Teacher information read,Y,Y,Y,Y,N
+TEACHER_WRITE,Create/update teachers,N,Y,Y,N,N
+CLASS_CONFIG,"Manage years, terms, sections, subjects",N,Y,Y,N,N
+TEACHING_ASSIGN,Assign teachers to sections,Y,Y,Y,N,N
+GRADE_ENTER,Enter grades,N,N,N,Assigned,N
+GRADE_REVIEW,Review submitted grades,Y,Y,N,Assigned,N
+GRADE_FINALIZE,Finalize grades,Y,Delegated,N,N,N
+GRADE_CORRECT,Approve corrected finalized grades,Y,Delegated,N,N,N
+FEE_CONFIG,Configure fee schedules,Y,N,N,N,Y
+CHARGE_MANAGE,Create/adjust student charges,N,N,N,N,Y
+PAYMENT_RECORD,Record payment and allocations,N,N,N,N,Y
+PAYMENT_CORRECT,Post financial correction,N,N,N,N,Y
+USER_MANAGE,Create/disable user accounts,N,Y,N,N,N
+ROLE_PERMISSIONS_EDIT,Modify role permissions,N,Y,N,N,N
+REPORT_ACADEMIC,Academic reports,Y,Y,Y,Assigned,N
+REPORT_FINANCIAL,Financial reports,Y,N,N,N,Y
+AUDIT_VIEW,Review audit logs,Y,Y,N,N,N
+BACKUP_ADMIN,Manage backup/restore,N,Y,N,N,N

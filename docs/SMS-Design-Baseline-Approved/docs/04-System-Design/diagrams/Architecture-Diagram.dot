@@ -1,0 +1,27 @@
+digraph SMS {
+  graph [label="SCHOOL MANAGEMENT SYSTEM | Approved Three-Tier Architecture", labelloc=t, fontsize=22, fontname="DejaVu Sans", bgcolor="#F7F9FC", pad=.35, nodesep=.65, ranksep=.95, splines=polyline];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=13, color="#A5B4C6", penwidth=1.4, margin="0.25,0.18"];
+  edge [fontname="DejaVu Sans", fontsize=11, color="#425A78", penwidth=2, arrowsize=.8];
+  subgraph cluster_clients {label="Presentation Tier | School LAN"; fontname="DejaVu Sans"; fontsize=15; style="rounded,filled"; color="#B7D7F0"; fillcolor="#EAF4FD";
+    principal [label="Principal\nJavaFX Desktop", fillcolor="#FFFFFF"];
+    staff [label="Administrative Staff\nJavaFX Desktop", fillcolor="#FFFFFF"];
+    teacher [label="Teacher\nJavaFX Desktop", fillcolor="#FFFFFF"];
+    accountant [label="Accountant\nJavaFX Desktop", fillcolor="#FFFFFF"];
+    sysadmin [label="System Administrator\nJavaFX Desktop", fillcolor="#FFFFFF"];
+    {rank=same;principal;staff;teacher;accountant;sysadmin}
+  }
+  subgraph cluster_app {label="Application Tier | Windows Server"; fontname="DejaVu Sans"; fontsize=15; style="rounded,filled"; color="#B9D7BE"; fillcolor="#ECF8EF";
+    api [label="Java Application Server\nHTTPS API / Authentication / RBAC\nBusiness Services / Transactions\nAudit / Reporting", fillcolor="#FFFFFF", width=5.0];
+  }
+  subgraph cluster_data {label="Data Tier | Protected Server Zone"; fontname="DejaVu Sans"; fontsize=15; style="rounded,filled"; color="#E2C7A2"; fillcolor="#FFF6E8";
+    db [label="MySQL Central Database\nSchool Data / Constraints / History", fillcolor="#FFFFFF", width=4.0];
+    backup [label="Restricted Backup Storage\nDaily Automated Backups", fillcolor="#FFFFFF"];
+  }
+  principal -> api [label="HTTPS / TLS"];
+  staff -> api;
+  teacher -> api;
+  accountant -> api;
+  sysadmin -> api;
+  api -> db [label="JDBC / controlled DB access"];
+  db -> backup [label="Backup job", style=dashed];
+}

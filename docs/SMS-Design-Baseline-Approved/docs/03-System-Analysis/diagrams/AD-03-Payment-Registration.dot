@@ -1,0 +1,36 @@
+digraph Activity {
+graph [rankdir=TB, bgcolor="white", pad="0.4", nodesep="0.4", ranksep="0.55", label="Payment Registration (UC-10)", labelloc=t, fontsize=22, fontname="DejaVu Sans", fontcolor="#14345B"];
+node [shape=box, style="rounded,filled", fillcolor="#E9F2FD", color="#3574B5", penwidth=1.4, fontname="DejaVu Sans", fontsize=11, margin="0.18,0.12"];
+edge [fontname="DejaVu Sans", fontsize=10, color="#47647E", arrowsize=0.75];
+start [label="Start", shape=ellipse, fillcolor="#163A64", color="#163A64", fontcolor="#FFFFFF"];
+open [label="Accountant opens student charges", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+auth [label="Has payment permission?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+deny [label="Access denied", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+select [label="Select unpaid charges and enter amount", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+valid [label="Amount positive and allocations valid?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+correct [label="Correct amount / allocations", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+over [label="Amount exceeds outstanding balance?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+reject [label="Reject overpayment", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+tx [label="Begin transaction; create payment and allocations", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+ok [label="All inserts and balance updates succeed?", shape=diamond, fillcolor="#FFF1CD", color="#D19C28", fontcolor="#18334F"];
+rollback [label="Rollback; show failure", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+commit [label="Commit; issue receipt and audit entry", shape=box, fillcolor="#E9F2FD", color="#3574B5", fontcolor="#18334F"];
+end [label="End", shape=ellipse, fillcolor="#163A64", color="#163A64", fontcolor="#FFFFFF"];
+start -> open [label=""];
+open -> auth [label=""];
+auth -> deny [label="No"];
+deny -> end [label=""];
+auth -> select [label="Yes"];
+select -> valid [label=""];
+valid -> correct [label="No"];
+correct -> select [label="Retry"];
+valid -> over [label="Yes"];
+over -> reject [label="Yes"];
+reject -> select [label="Revise"];
+over -> tx [label="No"];
+tx -> ok [label=""];
+ok -> rollback [label="No"];
+rollback -> end [label=""];
+ok -> commit [label="Yes"];
+commit -> end [label=""];
+}

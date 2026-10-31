@@ -1,0 +1,23 @@
+@startuml
+title SD-03 - Section Transfer
+autonumber
+skinparam sequenceMessageAlign center
+participant "Admin Staff" as P0
+participant "Section UI" as P1
+participant "Enrollment Service" as P2
+participant "Assignment Repository" as P3
+participant "Database" as P4
+P0 -> P1 : Select enrollment + target section + date
+P1 -> P2 : transferSection(request)
+P2 -> P2 : Authorize + validate academic year
+P2 -> P3 : beginTransaction + lock enrollment
+P3 -> P4 : SELECT FOR UPDATE active assignment
+P4 -> P3 : Current assignment
+P2 -> P2 : Check date, overlap and section eligibility
+P2 -> P3 : closeCurrentAndCreateNew()
+P3 -> P4 : UPDATE effectiveTo; INSERT assignment
+P4 -> P3 : Commit / rollback
+P3 -> P2 : Transfer result
+note over P1: alt: success or conflict
+P1 -> P0 : Show history / error
+@enduml

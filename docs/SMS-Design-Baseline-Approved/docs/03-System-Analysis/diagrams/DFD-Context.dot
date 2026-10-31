@@ -1,0 +1,22 @@
+digraph Context {
+graph [label="SMS — DFD Context Diagram",labelloc=t,fontsize=23,fontname="DejaVu Sans",ranksep=1.4,nodesep=.65,bgcolor=white,splines=polyline,pad=.5];
+node [fontname="DejaVu Sans",fontsize=12,style=filled,color="#315a79",penwidth=1.5]; edge [fontname="DejaVu Sans",fontsize=10,color="#425a70",arrowsize=.75];
+SMS [label="0\nSchool Management\nSystem (SMS)",shape=ellipse,fillcolor="#d9edf8",width=3.0,height=1.5];
+Principal [shape=box,fillcolor="#f4f6f8",label="School Principal"];
+Admin [shape=box,fillcolor="#f4f6f8",label="System Administrator"];
+Staff [shape=box,fillcolor="#f4f6f8",label="Administrative Staff"];
+Teacher [shape=box,fillcolor="#f4f6f8",label="Teacher"];
+Accountant [shape=box,fillcolor="#f4f6f8",label="Accountant"];
+Principal -> SMS [label="Report requests / filters"];
+SMS -> Principal [label="Authorized summaries / reports"];
+Admin -> SMS [label="Account / role / permission data"];
+SMS -> Admin [label="Account status / access results"];
+Staff -> SMS [label="Student, teacher, class,\nenrollment records"];
+SMS -> Staff [label="Record confirmations /\nstudent and class information"];
+Teacher -> SMS [label="Grade submissions / queries"];
+SMS -> Teacher [label="Assigned classes /\ngrade status"];
+Accountant -> SMS [label="Fee rules, charges, payments,\ncorrection requests"];
+SMS -> Accountant [label="Balances / receipts /\nfinancial results"];
+{rank=same; Principal;Admin;Staff}
+{rank=same; Teacher;Accountant}
+}

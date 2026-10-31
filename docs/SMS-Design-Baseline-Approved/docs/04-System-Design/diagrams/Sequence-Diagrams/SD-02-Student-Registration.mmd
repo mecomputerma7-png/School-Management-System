@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-02 - Student Registration
+    participant P0 as Admin Staff
+    participant P1 as Student UI
+    participant P2 as Student Service
+    participant P3 as Student Repository
+    participant P4 as Database
+    P0->>P1: Submit student details
+    P1->>P2: registerStudent(data)
+    P2->>P2: Authorize + validate fields
+    P2->>P3: checkStudentNumber(number)
+    P3->>P4: SELECT uniqueness
+    P4->>P3: Exists / not exists
+    P3->>P2: Result
+    P2->>P3: beginTransaction(), insertStudent()
+    P3->>P4: INSERT student, COMMIT
+    P4->>P3: StudentID / failure
+    P3->>P2: Created student / error
+    Note over P2: alt: success or validation error
+    P1->>P0: Show result

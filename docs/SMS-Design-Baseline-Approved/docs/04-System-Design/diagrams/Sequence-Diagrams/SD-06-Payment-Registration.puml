@@ -1,0 +1,23 @@
+@startuml
+title SD-06 - Payment Registration
+autonumber
+skinparam sequenceMessageAlign center
+participant "Accountant" as P0
+participant "Payment UI" as P1
+participant "Payment Service" as P2
+participant "Finance Repository" as P3
+participant "Database" as P4
+P0 -> P1 : Select enrollment, charges, amount
+P1 -> P2 : recordPayment(allocations)
+P2 -> P2 : Authorize + positive amount + full allocation
+P2 -> P3 : beginTransaction(); lock charges
+P3 -> P4 : SELECT charges FOR UPDATE
+P4 -> P3 : Current outstanding balances
+P2 -> P2 : Check same enrollment; no overpayment
+P2 -> P3 : insertPaymentAndAllocations()
+P3 -> P4 : INSERT payment + allocations; COMMIT
+P4 -> P3 : Payment ID / rollback
+P3 -> P2 : Transaction result
+note over P1: alt: receipt or rejected amount
+P1 -> P0 : Display receipt / validation error
+@enduml

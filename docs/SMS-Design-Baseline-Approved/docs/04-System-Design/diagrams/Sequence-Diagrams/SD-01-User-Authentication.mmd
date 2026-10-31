@@ -1,0 +1,17 @@
+sequenceDiagram
+    title SD-01 - User Authentication
+    participant P0 as User
+    participant P1 as Login UI
+    participant P2 as Auth Service
+    participant P3 as User Repository
+    participant P4 as Database
+    P0->>P1: Submit username + password
+    P1->>P2: authenticate(credentials)
+    P2->>P3: findByUsername(username)
+    P3->>P4: SELECT user, hash, status, roles
+    P4->>P3: Account record / not found
+    P3->>P2: Account record
+    P2->>P2: Verify hash + active status
+    Note over P2: alt: valid -> session + permissions
+    P1->>P0: Open authorized dashboard
+    Note over P2: else: invalid -> generic error

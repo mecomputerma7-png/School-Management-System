@@ -1,0 +1,20 @@
+sequenceDiagram
+    title SD-06 - Payment Registration
+    participant P0 as Accountant
+    participant P1 as Payment UI
+    participant P2 as Payment Service
+    participant P3 as Finance Repository
+    participant P4 as Database
+    P0->>P1: Select enrollment, charges, amount
+    P1->>P2: recordPayment(allocations)
+    P2->>P2: Authorize + positive amount + full allocation
+    P2->>P3: beginTransaction(), lock charges
+    P3->>P4: SELECT charges FOR UPDATE
+    P4->>P3: Current outstanding balances
+    P2->>P2: Check same enrollment, no overpayment
+    P2->>P3: insertPaymentAndAllocations()
+    P3->>P4: INSERT payment + allocations, COMMIT
+    P4->>P3: Payment ID / rollback
+    P3->>P2: Transaction result
+    Note over P2: alt: receipt or rejected amount
+    P1->>P0: Display receipt / validation error
